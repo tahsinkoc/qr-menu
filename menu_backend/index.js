@@ -33,13 +33,6 @@ pool.connect((err, client, release) => {
     })
 })
 
-app.get('/testdata', (req, res, next) => {
-    pool.query('insert into test (id, per_name) VALUES($1, $2)', ['3', 'Polat Alemdar']).catch(err => console.log(err))
-    pool.query('select * from test')
-        .then(result => {
-            res.send(result.rows)
-        })
-})
 
 app.get('/categories', (req, res, next) => {
     pool.query('select * from categories')
